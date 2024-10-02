@@ -4,13 +4,11 @@
 
 hadoop/usr/local/hadoop/etc/hadoop 파일 아래의
 1. yarn-site.xml
-2. workers
 3. hdfs-site.xml
 4. core-site.xml
 5. maperd-site.xml
+6. hadoop-env.sh  
 파일 수정
-
-1. hadoop-env.sh
 
 
 ```
