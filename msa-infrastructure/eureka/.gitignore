@@ -286,3 +286,7 @@ gradle-app.setting
 
 # yml
 application.yml
+application.properties
+
+# submodule
+config-secret-d108/**
