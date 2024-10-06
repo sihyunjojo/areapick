@@ -23,3 +23,15 @@ IP와 포트는 Config Server의 값을 입력해주지만 저장소이름과 �
 # 결론
 | **위의 이름-환경.yml의 파일이 바뀌어도 항상 저 url의 요청을 통해서 바뀐 값을 실시간으로 가져올 수 있다.**
 
+# client 추가 후 설정 방법
+```yml
+spring:
+  application:
+    name: 이름
+  profiles:
+    active: 환경
+  config:
+    import: optional:configserver:http://아이디:비밀번호@아이피:포트
+# 이름-환경.yml 의 이름, 환경
+# config server 정보
+```
