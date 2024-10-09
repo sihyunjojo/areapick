@@ -60,7 +60,7 @@ tasks.named('build') {
 	dependsOn('copyYML')
 }
 
- 혹은 processResources 작업과 연결
+// 혹은 processResources 작업과 연결
 tasks.named('processResources') {
 	dependsOn('copyYML')
 }
