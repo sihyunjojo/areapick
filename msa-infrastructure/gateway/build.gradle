@@ -33,13 +33,14 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux' // 이 변경으로 Spring MVC 대신 reactive stack(WebFlux)을 사용하게 되어 Spring Cloud Gateway와의 호환성 문제를 해결할 수 있습니다.
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-	implementation 'io.netty:netty-resolver-dns-native-macos:4.1.112.Final:osx-aarch_64'
+//	implementation 'io.netty:netty-resolver-dns-native-macos:4.1.112.Final:osx-aarch_64'
 //	implementation 'io.netty:netty-resolver-dns-native-linux:4.1.112.Final:linux-x86_64'
 }
 
