@@ -1,0 +1,110 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.2'
+	id 'io.spring.dependency-management' version '1.1.6'
+	id 'jacoco'
+	id "org.sonarqube" version "5.0.0.4638"
+}
+
+group = 'com.d108.'
+version = '0.0.1-SNAPSHOT'
+
+ext.jacocoDir = layout.buildDirectory.dir("customJacocoReportDir").get().asFile.toString() as String
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok:'
+
+	implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+
+	//swagger
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.6.0'
+
+	// queryDSL
+	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+	annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
+	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+
+	// junit (test tool)
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// jwt
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
+
+	// mariadb
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+	// kafka
+    implementation 'org.springframework.kafka:spring-kafka:3.2.2'
+
+	// mysql
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+	// mail
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+	//jsonObject
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
+	implementation 'org.json:json:20211205'
+
+	// Hibernate Spatial
+	implementation 'org.hibernate.orm:hibernate-spatial:6.0.0.Final' // 버전 확인 후 최신으로 변경
+
+	// JTS (Java Topology Suite)
+	implementation 'org.locationtech.jts:jts-core:1.18.2'
+
+	implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+task copyYML(type: Copy) {
+	copy {
+		from './submodule'
+		include "*.yml"
+		into 'src/main/resources'
+	}
+}
+
+
+// 분리된 설정 파일 포함
+apply {
+	from 'querydsl.gradle'
+}
+
+// 스프링 부트 2.5 버전 이후, 프로젝트를 빌드할 때 .jar 파일이 두 개가 생성 -> 방지 -> 올바른 jar 파일 사용
+jar {
+	enabled = false
+}

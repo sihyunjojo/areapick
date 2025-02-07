@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: recommendation
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://admin:safe0113@15.165.236.50:9000

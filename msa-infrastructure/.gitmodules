@@ -1,0 +1,9 @@
+[submodule "eureka/config-secret-d108"]
+	path = eureka/config-secret-d108
+	url = https://github.com/sihyunjojo/config-secret-d108.git
+[submodule "gateway/config-secret-d108"]
+	path = gateway/config-secret-d108
+	url = https://github.com/sihyunjojo/config-secret-d108.git
+[submodule "config/config-secret-d108"]
+	path = config/config-secret-d108
+	url = https://github.com/sihyunjojo/config-secret-d108.git
