@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# local mac 환경에서의 작업
 ---
 networks:
   kafka_network:
